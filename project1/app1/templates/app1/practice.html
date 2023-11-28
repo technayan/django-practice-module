@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <a href="/" style="font-size: 20px;">Home</a>
+            <a href="/about/" style="font-size: 20px;">About</a>
+            <a href="/app1/contact/" style="font-size: 20px;">Contact</a>
+            <a href="/app1/practice/" style="font-size: 20px;">Practice</a>
+        </div>
+
+        <h1 style="text-align: center; margin-top: 50px;">App1 / Practice Page</h1>
+
+        {% comment %} Django Template Language {% endcomment %}
+        <h2>Admin: {{admin}}</h2>
+
+        {% comment %} Conditional Statement {% endcomment %}
+        {% if age >= 20 %}
+        <h3>You will get access</h3>
+        {% elif age >= 10 and age <= 19 %}
+        <h3>You won't get access</h3>\
+        {% else %}
+        <h3>You are a kid</h3>
+        {% endif %}
+
+        {% comment %} Loop {% endcomment %}
+        {% for c in courses %}
+        <h4>Course: {{c.name}}, Fee: {{c.fee}}</h4>
+        {% endfor %}
+
+        {% comment %} Django Template Filters {% endcomment %}
+        <p>{{ nums | join:'-' }}</p>
+        <p>{{ nums | join:'/' }}</p>
+        <p>{{ nums | join:'' }}</p>
+
+        <p>{{ today | date:'D d M Y' }}</p>
+        <p>{{ today | date:'d M, Y' }}</p>
+        <p>{{ today | date:'SHORT_DATE_FORMAT' }}</p>
+        <p>{{ today | date }}</p>
+
+        <p>{{ text | default:"Nothing here" }}</p>
+
+        <p>{{ marks | add:"30" }}</p>
+
+        <p>{{ greetings | capfirst }}</p>
+
+        <p>{{ greetings2 | lower }}</p>
+
+        <p>{{ msg | cut:' ' }}</p>
+        <p>{{ msg | cut:'Python' }}</p>
+
+        <p>{{ courses | dictsort:'name' }}</p>
+        <p>{{ courses | dictsort:'fee' }}</p>
+
+        <p>{{ 'This should be "fun" 50 is > 20. <p>This <em>should be</em> fun!</p>' | escape }}</p>
+
+        <p>{{ fruits | first }}</p>
+        <p>{{ fruits | last }}</p>
+        <p>{{ fruits | length }}</p>
+        <p>{{ greetings | length }}</p>
+
+        <p>{{ multi_line | linenumbers }}</p>
+
+        <p>{{ text2 | title }}</p>
+
+        <p>{{ fruits | random }}</p>
+
+        <p>{{ fruits | slice:'2' }}</p>
+
+        <p>{{ today | time:'H\h:i\m:s\s' }}</p>
+
+        <p>{{ publication | timesince }}</p>
+
+        <p>{{ greetings | truncatechars:'5' }}</p>
+
+        <p>{{ msg | wordcount }}</p>
+
+        <p>{{ msg | truncatewords:'3' }}</p>
+
+        <p>{{ '<b>I</b> <button>love</button> <span>coding</span>' | striptags }}</p>
+
+        <p>You have {{ count }} message{{ count | pluralize }} </p>
+        <p>You have {{ count2 }} message{{ count2 | pluralize }} </p>
+        <p>You have {{ count }} tomato{{ count | pluralize:'es' }} </p>
+        <p>You have {{ count2 }} tomato{{ count2 | pluralize:'es' }} </p>
+        <p>You have {{ count }} cherr{{ count | pluralize:'y,ies' }} </p>
+        <p>You have {{ count2 }} cherr{{ count2 | pluralize:'y,ies' }} </p>
+
+        <p>{{ admin | make_list }}</p>
+        <p>{{ age | make_list }}</p>
+
+
+
+
+        <script src="" async defer></script>
+    </body>
+</html>
