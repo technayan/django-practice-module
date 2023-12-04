@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Form{% endblock title %}
+
+{% block content %}
+<form method="POST" action="/about/">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="user-name">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name="user-email" aria-describedby="emailHelp">
+    </div>
+    <select class="form-select" aria-label="Default select example" name="rating">
+        <option selected>Rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+    
+  </form>
+{% endblock content %}

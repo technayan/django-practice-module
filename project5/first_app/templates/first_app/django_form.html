@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Django Forms{% endblock title %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<form method="POST" enctype='multipart/form-data'>     {% comment %} encoding type to support all types of data {% endcomment %}
+    {% csrf_token %}        {% comment %} CSRF (Cross Site Request Fargery) to secure the form {% endcomment %}
+    
+    {{ form | crispy }}         {% comment %} wrap the form in a <p></p> tag {% endcomment %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+{% endblock content %}
