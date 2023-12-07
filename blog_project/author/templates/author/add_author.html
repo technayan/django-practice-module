@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Add Author{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="text-center my-3">Add Author</h1>
+
+<form method="POST" class="w-50 mx-auto mb-5">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <input type="submit" value="Add Author" class="btn btn-primary">
+</form>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="row g-3 my-4">
+    {% for post in posts %}
+    <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">{{ post.content | truncatechars:190 }}</p>
+          <p>Author: <strong>{{ post.author }}</strong></p>
+          {% for cat in post.categories.all %}
+            <span class="bg-body-secondary small rtiary px-2 py-1 rounded-pill">{{cat}}</span>
+          {% endfor %}
+          <d class="d-flex mt-3">
+              <a href={% url "edit_post" post.id %} class="btn btn-warning me-2 py-1">Edit</a>
+              <a href={% url "delete_post" post.id %} class="btn btn-danger py-1">Delete</a>
+          </d>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
