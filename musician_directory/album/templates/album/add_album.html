@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Add Album{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3 class="text-center mt-4">Add Album</h3>
+<form method="POST" class="w-50 mx-auto mt-3 mb-5">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <input type="submit" value="Add Album" class="btn btn-primary">
+</form>
+{% endblock content %}
