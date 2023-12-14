@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="container">
+    {% for m in messages %}
+        <p class="text-{{m.tags}} my-3">{{ m }}</p>
+    {% endfor %}
+    <h2 class="my-4">Welcome to Django</h2>
+</div>
+{% endblock content %}

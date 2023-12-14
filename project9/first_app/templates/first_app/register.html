@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock title %}
+
+
+{% block content %}
+{% for m in messages %}
+    <span class="text-success">{{ m }}</span>
+{% endfor %}
+
+<h4 class="my-3 text-center">Register</h4>
+{% load crispy_forms_tags %}
+
+<form method="POST" style="width: 50%; margin: auto" novalidate>
+    {% csrf_token %}
+    <!--{{form | crispy}}-->
+    {% for fm in form %}
+        {{ fm.label_tag }}
+        {{ fm }}
+        {{ fm.errors|striptags }}
+    {% endfor %}
+    <br>
+    <input type="submit" value="Register" class="btn btn-primary mt-2">
+</form>
+{% endblock content %}

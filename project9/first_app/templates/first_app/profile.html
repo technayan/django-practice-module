@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Welcome {{ user }}</h1>
+<br>
+<a href={% url "change_pass" %} class="btn btn-warning">Change Password</a>
+<a href={% url "set_pass" %} class="btn btn-info">Change Password withour Old Pass</a>
+
+{% for m in messages %}
+    <p class="bg-success px-2 py-1 rounded text-white mt-3 w-50 mx-auto">{{ m }}</p>
+{% endfor %}
+<h4 class="my-3 text-center">Update User Data</h4>
+<form method="POST" style="width: 50%; margin: auto" novalidate>
+    {% csrf_token %}
+    <!--{{form | crispy}}-->
+    {% for fm in form %}
+        {{ fm.label_tag }}
+        {{ fm }}
+        {{ fm.errors|striptags }}
+    {% endfor %}
+    <br>
+    <input type="submit" value="Update" class="btn btn-primary mt-2">
+</form>
+{% endblock content %}
