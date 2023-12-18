@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Post{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="text-center my-3">Delete Post</h1>
+
+<form method="POST" class="w-50 mx-auto mb-5">
+    <h5 class="mb-3">Are you sure to delete this post?</h5>
+    {% csrf_token %}
+    {{ form | crispy }}
+    <input type="submit" value="Yes" class="btn btn-primary">
+</form>
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row g-4">
+      <div class="col-sm-3 bg-dark px-5 py-4" style="min-height: 100vh;">
+        <h5 class="my-3 text-white fw-bold text-danger">Categories</h5>
+        <a href={% url "home" %} class="text-white my-1 d-inline-block fs-5 text-decoration-none">All</a><br>
+        {% for cat in categories %}
+          <a href={% url "category_wise_post" cat.slug %} class="text-white my-1 d-inline-block fs-5 text-decoration-none">{{ cat }}</a><br>
+        {% endfor %}
+      </div>
+      <div class="col-sm-9">
+        <div class="row g-4 mb-4">
+          {% if posts %}
+            <p class="mt-5 mb-0">Available posts: {{ posts | length }}</p>
+              {% for post in posts %}
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                  <div class="card-body">
+                    {% comment %} <span>{{post.image.url}}</span> {% endcomment %}
+                    <a href={% url "post_details" post.id %} class="text-decoration-none text-dark d-block">
+                      <img src={{ post.image.url }} alt="{{ post.title }}" class="img-fluid">
+                    </a>
+                    <h4 class="card-title mt-3"><a href={% url "post_details" post.id %} class="text-decoration-none text-dark d-block">{{ post.title }}</a></h4>
+                    <p class="card-text">{{ post.content | truncatewords:30 }} <a href={% url "post_details" post.id %} class="d-inline">Read more</a></p>
+                    
+                    <p>Author: <strong>{{ post.author | capfirst }}</strong></p>
+                    {% for cat in post.categories.all %}
+                      <span class="bg-body-secondary small rtiary px-2 py-1 rounded-pill">{{cat.name}}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+          {% else %}
+          <p class="mt-5 mb-0">No post available.</p>
+          {% endif %}
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

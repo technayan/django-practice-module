@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ type }}{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1 class="text-center my-3">{{ type }}</h1>
+
+<form method="POST" class="w-50 mx-auto mb-5">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <input type="submit" value={{ type }} class="btn {% if type == "Login" %}btn-primary{% else %}btn-success{% endif %}">
+</form>
+{% endblock content %}
